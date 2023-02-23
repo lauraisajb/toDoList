@@ -10,3 +10,34 @@ Consiste en la creación de un API REST para la administración de una lista de 
 - Pipeline de CI.
 - Buenas prácticas de programación.
 - Almacenamiento en BD.
+
+
+## Comandos para la ejecución en local
+1. Instalar requerimientos  
+    ```
+    pip install -r requirements.txt
+    ```
+2. Iniciar la base de datos
+    ```
+    flask --app src.adapters.app.application init-db
+    ```
+3. Comando la ejecutar la aplicación
+    ```
+    flask --app src.adapters.app.application --debug run -h 0.0.0.0 -p 8000
+    ```
+
+## Comando para construir la imagen de Docker
+1. Comando para construir la imagen
+    ```
+    docker image build -t flask_docker .
+    ```
+2. Comando para ejecutar el contenedor
+    ```
+    docker run -p 8000:8000 -d flask_docker
+    ```
+
+## Tecnologías utilizadas
+- Python
+- Flask
+- Sqlite
+- Docker
