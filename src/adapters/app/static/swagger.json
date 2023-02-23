@@ -17,7 +17,7 @@
     }
   ],
   "paths": {
-    "/todo": {
+    "/api/v1/todo": {
       "get": {
         "tags": [
           "Todo Request"
@@ -31,7 +31,7 @@
             }
           }
         }
-      },
+      }, 
       "post": {
         "tags": [
           "Todo Request"
@@ -64,7 +64,23 @@
         }
       }
     },
-    "/todo/{id}": {
+    "/api/v1/todo/completed": {
+      "get": {
+        "tags": [
+          "Todo Request"
+        ],
+        "summary": "Returns completed todoRequests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/todoRequest"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/todo/{id}": {
       "parameters": [
         {
           "name": "id",
@@ -184,7 +200,7 @@
     "schemas": {
       "id": {
         "properties": {
-          "uuid": {
+          "id": {
             "type": "integer"
           }
         }
@@ -213,7 +229,7 @@
             "type": "string",
             "format": "string"
           },
-          "complete": {
+          "completed": {
             "type": "boolean",
             "format": "boolean"
           }
