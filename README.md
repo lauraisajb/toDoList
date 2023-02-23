@@ -26,7 +26,7 @@ Consiste en la creación de un API REST para la administración de una lista de 
     flask --app src.adapters.app.application --debug run -h 0.0.0.0 -p 8000
     ```
 
-## Comando para construir la imagen de Docker
+## Comando para construir la imagen de Docker local
 1. Comando para construir la imagen
     ```
     docker image build -t flask_docker .
@@ -34,6 +34,16 @@ Consiste en la creación de un API REST para la administración de una lista de 
 2. Comando para ejecutar el contenedor
     ```
     docker run -p 8000:8000 -d flask_docker
+    ```
+
+## Comando para construir contenedor Docker Hub
+1. Comando para construir la imagen
+    ```
+    docker pull lauraisajb/tododevco
+    ```
+2. Comando para ejecutar el contenedor
+    ```
+    docker run -p 8000:8000 -d lauraisajb/tododevco
     ```
 
 ## Tecnologías utilizadas
