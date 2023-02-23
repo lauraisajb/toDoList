@@ -1,3 +1,4 @@
+import logging
 from dependency_injector.wiring import Provide, inject
 from flask import Blueprint, abort, jsonify, request
 
@@ -86,7 +87,7 @@ async def create_record(
     try:
         todo_service.create(todo)
     except TodoDBOperationError as err:
-        raise (f"Something went wrong with database operation {err}")
+        logging.error(f"Something went wrong with database operation {err}")
 
     return jsonify(todo.to_dict()), 201
 
@@ -132,7 +133,7 @@ async def edit_record(
     try:
         status = todo_service.update(todo)
     except TodoDBOperationError as err:
-        raise (f"Something went wrong with database operation {err}")
+        logging.error(f"Something went wrong with database operation {err}")
     if status is None:
         abort(404)
 
@@ -154,7 +155,7 @@ async def delete_record(
     try:
         status = todo_service.delete(todo)
     except TodoDBOperationError as err:
-        raise (f"Something went wrong with database operation {err}")
+        logging.error(f"Something went wrong with database operation {err}")
 
     if status is None:
         abort(404)
